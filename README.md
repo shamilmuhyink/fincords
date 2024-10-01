@@ -1,1 +1,1 @@
-# fincords
+# fincords - track your financial records
