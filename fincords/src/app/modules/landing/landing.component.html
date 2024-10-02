@@ -1,0 +1,50 @@
+<!-- <div class="container">
+    <div class="row">
+        <div class="col">
+
+        </div>
+        <div class="col">
+            <form [formGroup]="loginForm" (ngSubmit)="sentOTP()">
+                <div class="form-group">
+                    <label for="mobile-number">Mobile Number: </label>
+                    <input type="tel" id="mobile-number" formControlName="mobileNumber" class="form-ontrol"
+                        placeholer="(+123) 1234567890">
+                </div>
+                <button type="submit" class="btn btn-primary">Get started</button>
+            </form>
+        </div>
+    </div>
+</div> -->
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title text-center mb-4">Login</h2>
+            <form [formGroup]="loginForm">
+              <div *ngIf="!otpSent">
+                <div class="form-group">
+                  <label for="mobileNumber">Mobile Number</label>
+                  <input type="tel" class="form-control" id="mobileNumber" formControlName="mobileNumber" placeholder="Enter your mobile number">
+                  <!-- <small class="text-danger" *ngIf="loginForm.get('mobileNumber').invalid && loginForm.get('mobileNumber').touched">
+                    Please enter a valid 10-digit mobile number.
+                  </small> -->
+                </div>
+                <!-- <button class="btn btn-primary btn-block mt-3" (click)="sendOtp()" [disabled]="loginForm.get('mobileNumber').invalid">Send OTP</button> -->
+              </div>
+              <div *ngIf="otpSent">
+                <div class="form-group">
+                  <label for="otp">OTP</label>
+                  <input type="text" class="form-control" id="otp" formControlName="otp" placeholder="Enter OTP">
+                  <!-- <small class="text-danger" *ngIf="loginForm.get('otp').invalid && loginForm.get('otp').touched">
+                    Please enter a valid 6-digit OTP.
+                  </small> -->
+                </div>
+                <button class="btn btn-primary btn-block mt-3" (click)="verifyOtp()" [disabled]="loginForm.invalid">Verify OTP</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
