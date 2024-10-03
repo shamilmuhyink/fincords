@@ -7,16 +7,16 @@ import { environment } from "src/environments/environment";
     providedIn: 'root'
 })
 
-export class LoginService {
+export class AuthService {
     private apiUrl = environment.apiUrl;
 
     constructor(private http: HttpClient) { }
-    
-    sendOtp(mobileNumber: string): Observable<any> {
-        return this.http.post(`${this.apiUrl}/auth/login`, { mobileNumber });
+
+    public sendOtp(data: object): Observable<any> {
+        return this.http.post(`${this.apiUrl}/auth/sentOtp`, data);
     }
 
-    verifyOtp(mobileNumber: string, otp: string): Observable<any> {
+    public verifyOtp(mobileNumber: string, otp: string): Observable<any> {
         return this.http.post(`${this.apiUrl}/auth/verify`, { mobileNumber, otp });
     }
 
